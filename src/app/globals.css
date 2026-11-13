@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-plus-jakarta: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-jetbrains-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* LIGHT THEME (Tokens RGB) */
+  --surface: 255 255 255;
+  --surface-dim: 241 245 249;
+  --surface-bright: 255 255 255;
+  --surface-container-lowest: 248 250 252; /* Slate 50 */
+  --surface-container-low: 255 255 255; /* White cards */
+  --surface-container: 241 245 249; /* Slate 100 */
+  --surface-container-high: 226 232 240; /* Slate 200 */
+  --surface-container-highest: 203 213 225; /* Slate 300 */
+  --surface-variant: 226 232 240;
+  --on-surface: 15 23 42; /* Slate 900 */
+  --on-surface-variant: 71 85 105; /* Slate 600 */
+  --inverse-surface: 15 19 28;
+  --inverse-on-surface: 223 226 239;
+  --outline: 148 163 184; /* Slate 400 */
+  --outline-variant: 226 232 240;
+  --surface-tint: 2 132 199;
+  --primary: 2 132 199; /* Sky 600 */
+  --on-primary: 255 255 255;
+  --primary-container: 14 165 233; /* Sky 500 */
+  --on-primary-container: 255 255 255;
+  --primary-fixed: 3 105 161;
+  --primary-fixed-dim: 2 132 199;
+  --secondary: 124 58 237; /* Violet 600 */
+  --on-secondary: 255 255 255;
+  --secondary-container: 237 233 254;
+  --on-secondary-container: 91 33 182;
+  --secondary-fixed: 109 40 217;
+  --secondary-fixed-dim: 124 58 237;
+  --tertiary: 5 150 105; /* Emerald 600 */
+  --on-tertiary: 255 255 255;
+  --tertiary-container: 209 250 229;
+  --on-tertiary-container: 6 95 70;
+  --background: 248 250 252;
+  --on-background: 15 23 42;
+}
+
+.dark {
+  /* DARK THEME (Tokens RGB) */
+  --surface: 15 19 28;
+  --surface-dim: 15 19 28;
+  --surface-bright: 53 57 67;
+  --surface-container-lowest: 10 14 23; /* #0a0e17 */
+  --surface-container-low: 24 27 37; /* #181b25 */
+  --surface-container: 28 31 41; /* #1c1f29 */
+  --surface-container-high: 38 42 52; /* #262a34 */
+  --surface-container-highest: 49 53 63; /* #31353f */
+  --surface-variant: 49 53 63;
+  --on-surface: 223 226 239; /* #dfe2ef */
+  --on-surface-variant: 188 201 205; /* #bcc9cd */
+  --inverse-surface: 223 226 239;
+  --inverse-on-surface: 44 48 58;
+  --outline: 134 147 151;
+  --outline-variant: 61 73 76;
+  --surface-tint: 76 215 246;
+  --primary: 76 215 246; /* #4cd7f6 */
+  --on-primary: 0 54 64;
+  --primary-container: 6 182 212;
+  --on-primary-container: 0 66 79;
+  --primary-fixed: 172 237 255;
+  --primary-fixed-dim: 76 215 246;
+  --secondary: 208 188 255;
+  --on-secondary: 60 0 145;
+  --secondary-container: 87 27 193;
+  --on-secondary-container: 196 171 255;
+  --secondary-fixed: 233 221 255;
+  --secondary-fixed-dim: 208 188 255;
+  --tertiary: 78 222 163;
+  --on-tertiary: 0 56 36;
+  --tertiary-container: 27 189 133;
+  --on-tertiary-container: 0 69 46;
+  --background: 15 19 28;
+  --on-background: 223 226 239;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-plus-jakarta);
+  }
+
+  body {
+    background-color: rgb(var(--surface-container-lowest));
+    color: rgb(var(--on-surface));
+    overflow-x: hidden;
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+}
+
+/* Light Mode Overrides for hardcoded subtle borders */
+html:not(.dark) .border-white\/5,
+html:not(.dark) .border-white\/10,
+html:not(.dark) .border-white\/20 {
+  border-color: rgba(15, 23, 42, 0.08) !important;
+}
+
+/* Subtle Technical Dot Grid */
+.bg-grid-pattern {
+  background-image: radial-gradient(rgba(15, 23, 42, 0.1) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.dark .bg-grid-pattern {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+html:not(.dark) .shadow-xl {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.03) !important;
+}
+
+html:not(.dark) .shadow-2xl {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.07), 0 10px 10px -5px rgba(0, 0, 0, 0.03) !important;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: rgb(var(--surface));
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--surface-container-high));
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--primary));
+}
